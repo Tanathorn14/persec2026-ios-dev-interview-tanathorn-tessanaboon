@@ -73,7 +73,7 @@ class ViewController: UIViewController {
 
     private func initQuestionViewControllers() {
         self.questionViewControllers = [
-            FirstAssignmentViewController(viewModel: .init()),
+            FirstAssignmentViewController(),
             SecondAssignmentViewController(),
             ThirdAssignmentViewController(),
             FourthAssignmentViewController(),

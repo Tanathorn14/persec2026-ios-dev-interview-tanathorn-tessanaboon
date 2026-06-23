@@ -11,8 +11,7 @@ class FirstAssignmentViewController: UIViewController {
 
     static let identifier = "FirstAssignmentViewController"
 
-    required init(viewModel: FirstAssignmentViewModel) {
-        self.viewModel = viewModel
+    required init() {
         super.init(nibName: FirstAssignmentViewController.identifier, bundle: Bundle(for: FirstAssignmentViewController.self))
     }
 
@@ -23,7 +22,7 @@ class FirstAssignmentViewController: UIViewController {
     @IBOutlet var textfield: UITextField!
     @IBOutlet var resultLabel: UILabel!
     
-    private var viewModel: FirstAssignmentViewModel
+    private let viewModel = FirstAssignmentViewModel()
 
     // MARK: - LifeCycle
     override func viewDidLoad() {

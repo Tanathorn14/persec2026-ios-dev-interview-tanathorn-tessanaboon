@@ -6,8 +6,6 @@
 //
 
 class FirstAssignmentViewModel {
-    init() { }
-
     func checkValue(_ input: String) -> Bool {
         var stack: [Character] = []
 
