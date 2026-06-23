@@ -44,7 +44,7 @@ class FirstAssignmentViewController: UIViewController {
             return
         }
 
-        let isValid = self.viewModel.checkValidBrackets(inputText)
+        let isValid = self.viewModel.checkValue(inputText)
 
         if isValid {
             self.resultLabel.text = "True"

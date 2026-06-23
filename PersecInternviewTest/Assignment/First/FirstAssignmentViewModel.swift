@@ -8,7 +8,7 @@
 class FirstAssignmentViewModel {
     init() { }
 
-    func checkValidBrackets(_ input: String) -> Bool {
+    func checkValue(_ input: String) -> Bool {
         var stack: [Character] = []
 
         let matchingText: [Character: Character] = [
