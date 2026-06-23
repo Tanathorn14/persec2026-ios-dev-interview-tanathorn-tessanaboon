@@ -57,7 +57,6 @@ class ViewController: UIViewController {
             self.segmentedControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
             self.segmentedControl.heightAnchor.constraint(equalToConstant: 40),
 
-            // ให้ Container View กินพื้นที่ที่เหลือทั้งหมดด้านล่าง
             self.containerView.topAnchor.constraint(
                 equalTo: self.segmentedControl.bottomAnchor,
                 constant: 10
@@ -72,15 +71,14 @@ class ViewController: UIViewController {
         self.segmentedControl.addTarget(self, action: #selector(self.segmentChanged(_:)), for: .valueChanged)
     }
 
-    // 4. ผูกคลาสย่อยทั้ง 6 เข้ากับ Array
     private func initQuestionViewControllers() {
         self.questionViewControllers = [
-            FirstAssignmentViewController()
-//            Question2ViewController(),
-//            Question3ViewController(),
-//            Question4ViewController(),
-//            Question5ViewController(),
-//            Question6ViewController(),
+            FirstAssignmentViewController(viewModel: .init()),
+            SecondAssignmentViewController(),
+            ThirdAssignmentViewController(),
+            FourthAssignmentViewController(),
+            FifthAssignmentViewController(),
+            SixthAssignmentViewController(),
         ]
     }
 
@@ -88,7 +86,6 @@ class ViewController: UIViewController {
         self.switchToViewController(at: sender.selectedSegmentIndex)
     }
 
-    // 5. ระบบสลับหน้าจอ Child View Controller
     private func switchToViewController(at index: Int) {
         let targetVC = self.questionViewControllers[index]
 
@@ -100,9 +97,11 @@ class ViewController: UIViewController {
             previousVC.removeFromParent()
         }
 
-        addChild(targetVC)
+        self.addChild(targetVC)
+
         targetVC.view.frame = self.containerView.bounds
         targetVC.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+
         self.containerView.addSubview(targetVC.view)
         targetVC.didMove(toParent: self)
 
