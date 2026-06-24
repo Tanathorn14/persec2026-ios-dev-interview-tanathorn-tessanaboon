@@ -27,28 +27,32 @@ class FirstAssignmentViewController: UIViewController {
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setupResultLabel()
         self.setupTextfield()
     }
 
     // MARK: - UserInterface
+    private func setupResultLabel() {
+        self.resultLabel.text = "Answer =>"
+    }
+
     private func setupTextfield() {
         self.textfield.delegate = self
         self.textfield.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
     }
 
     // MARK: - Action
-
     @objc private func textFieldDidChange(_ textField: UITextField) {
-        guard let inputText = textField.text, !inputText.isEmpty else {
+        guard let text = textField.text, !text.isEmpty else {
             return
         }
 
-        let isValid = self.viewModel.checkValue(inputText)
+        let isValid = self.viewModel.checkValue(text)
 
         if isValid {
-            self.resultLabel.text = "True"
+            self.resultLabel.text = "Answer => True"
         } else {
-            self.resultLabel.text = "False"
+            self.resultLabel.text = "Answer => False"
         }
     }
 }
@@ -61,7 +65,7 @@ extension FirstAssignmentViewController: UITextFieldDelegate {
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if string.isEmpty {
-            self.resultLabel.text = ""
+            self.resultLabel.text = "Answer =>"
             return true
         }
 

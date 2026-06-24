@@ -27,10 +27,15 @@ class FifthAssignmentViewController: UIViewController {
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setupResultLabel()
         self.setupTextfield()
     }
 
     // MARK: - UserInterface
+    private func setupResultLabel() {
+        self.resultLabel.text = "Answer =>"
+    }
+
     private func setupTextfield() {
         self.textfield.delegate = self
         self.textfield.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
@@ -44,7 +49,7 @@ class FifthAssignmentViewController: UIViewController {
 
         let intValue = self.viewModel.sortNumber(number)
 
-        self.resultLabel.text = "\(intValue)"
+        self.resultLabel.text = "Answer => \(intValue)"
     }
 }
 
@@ -56,7 +61,7 @@ extension FifthAssignmentViewController: UITextFieldDelegate {
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if string.isEmpty {
-            self.resultLabel.text = ""
+            self.resultLabel.text = "Answer =>"
             return true
         }
 

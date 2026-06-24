@@ -27,10 +27,15 @@ class SecondAssignmentViewController: UIViewController {
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setupResultLabel()
         self.setupTextfield()
     }
 
     // MARK: - UserInterface
+    private func setupResultLabel() {
+        self.resultLabel.text = "Answer =>"
+    }
+
     private func setupTextfield() {
         self.textfield.placeholder = "ex: TH10, TH1, TH9"
         self.textfield.autocapitalizationType = .allCharacters
@@ -41,17 +46,17 @@ class SecondAssignmentViewController: UIViewController {
 
     // MARK: - Action
     @objc private func textFieldDidChange(_ textField: UITextField) {
-        guard let inputText = textField.text, !inputText.isEmpty else {
+        guard let text = textField.text, !text.isEmpty else {
             return
         }
 
-        let inputArray = inputText.components(separatedBy: ",")
+        let textArray = text.components(separatedBy: ",")
             .map { $0.trimmingCharacters(in: .whitespaces) }
             .filter { !$0.isEmpty }
 
-        let sortedArray = self.viewModel.sortStringsNaturally(inputArray)
+        let sortedArray = self.viewModel.sortStrings(textArray)
         let resultString = sortedArray.joined(separator: ", ")
-        self.resultLabel.text = "\(resultString)"
+        self.resultLabel.text = "Answer => \(resultString)"
     }
 }
 
@@ -63,7 +68,7 @@ extension SecondAssignmentViewController: UITextFieldDelegate {
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if string.isEmpty {
-            self.resultLabel.text = ""
+            self.resultLabel.text = "Answer =>"
             return true
         }
 
