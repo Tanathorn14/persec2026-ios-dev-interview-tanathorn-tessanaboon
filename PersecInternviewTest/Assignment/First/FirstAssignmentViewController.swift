@@ -37,6 +37,7 @@ class FirstAssignmentViewController: UIViewController {
     }
 
     private func setupTextfield() {
+        self.textfield.placeholder = "ex: (, [, {, ), ], }"
         self.textfield.delegate = self
         self.textfield.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
     }

@@ -39,7 +39,10 @@ class SixthAssignmentViewController: UIViewController {
 
     private func setupTextfield() {
         self.triboTextfield.delegate = self
+        self.triboTextfield.placeholder = "ex: 1, 1, 1"
+
         self.resultCountTextfield.delegate = self
+        self.resultCountTextfield.placeholder = "ex: 0-9"
 
         self.triboTextfield.addTarget(self, action: #selector(self.textFieldDidChange), for: .editingChanged)
         self.resultCountTextfield.addTarget(self, action: #selector(self.textFieldDidChange), for: .editingChanged)

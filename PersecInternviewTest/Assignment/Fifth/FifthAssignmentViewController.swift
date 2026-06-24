@@ -37,6 +37,7 @@ class FifthAssignmentViewController: UIViewController {
     }
 
     private func setupTextfield() {
+        self.textfield.placeholder = "ex: 0-9"
         self.textfield.delegate = self
         self.textfield.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
     }
